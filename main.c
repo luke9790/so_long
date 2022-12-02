@@ -39,6 +39,9 @@ int main(void)
 	draw_square((t_square){93, 93, 30, 0xFF0000}, image);
 	mlx_put_image_to_window (image.win.mlx_ptr, image.win.win_ptr, image.img_ptr, 0, 0);
 	}
+
+	//img = mlx_png_file_to_image(mlx, "./sprite/Wizard/Idle.png", &img_width, &img_height);
+
 	/*HOOOOOOK*/
         mlx_key_hook (tutorial.win_ptr, read_keys, &image);
         /**********/
