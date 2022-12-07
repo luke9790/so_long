@@ -1,13 +1,11 @@
 Il gioco e' stato testato esclusivamente su Linux e va configurato. 
+
 ```
 make
 ```
-oppure
-```
-make bonus
-```
 
 In caso di problemi ripulire usando
+
 ```
 make fclean
 ```
@@ -17,11 +15,9 @@ Per eseguire il programma e' necessario selezionare una mappa normale o bonus. E
 ```
 ./so_long assets/maps/big.ber
 ```
-oppure
+
 ```
-./so_long_bonus assets/maps_bonus/big.ber
-```
-La mappa deve essere in formato .ber e contenere solo i seguenti caratteri (K solo per la versione bonus)
+La mappa deve essere in formato .ber e contenere solo i seguenti caratteri.
 
 | Carattere | Descrizione                                      |
 | --------- | -----------------------------------------------|
