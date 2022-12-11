@@ -25,7 +25,7 @@ void	player_w(t_game *game)
 		mlx_clear_window(game->mlx, game->win);
 		game->map[game->y_player + 1][game->x_player] = '0';
 		game->moves++;
-		game->endgame = 1;
+		game->endgame = 2;
 		map_draw(game);
 	}
 	else if (game->map[game->y_player][game->x_player] == 'K')
@@ -53,7 +53,7 @@ void	player_s(t_game *game)
 		mlx_clear_window(game->mlx, game->win);
 		game->map[game->y_player - 1][game->x_player] = '0';
 		game->moves++;
-		game->endgame = 1;
+		game->endgame = 2;
 		map_draw(game);
 	}
 	else if (game->map[game->y_player][game->x_player] == 'K')
@@ -81,7 +81,7 @@ void	player_d(t_game *game)
 		mlx_clear_window(game->mlx, game->win);
 		game->map[game->y_player][game->x_player - 1] = '0';
 		game->moves++;
-		game->endgame = 1;
+		game->endgame = 2;
 		map_draw(game);
 	}
 	else if (game->map[game->y_player][game->x_player] == 'K')
@@ -109,7 +109,7 @@ void	player_a(t_game *game)
 		mlx_clear_window(game->mlx, game->win);
 		game->map[game->y_player][game->x_player + 1] = '0';
 		game->moves++;
-		game->endgame = 1;
+		game->endgame = 2;
 		map_draw(game);
 	}
 	else if (game->map[game->y_player][game->x_player] == 'K')

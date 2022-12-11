@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-static int	argv_checker(char *argv)
+static int	controllo_ber(char *argv)
 {
 	int	i;
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		game.map = read_map(argv[1]);
-		if (map_checker(&game) && argv_checker(argv[1]))
+		if (map_checker(&game) && controllo_ber(argv[1]))
 		{
 			game_init(&game);
 			gameplay(&game);
@@ -33,13 +33,13 @@ int	main(int argc, char **argv)
 		{
 			if (game.map)
 				free_map(game.map);
-			printf("Error\nInvalid Map");
+			printf("Errore\nMappa non valida!");
 			exit(1);
 		}
 	}
 	else
 	{
-		printf("Error\nInvalid Sytax");
+		printf("Errore\nNumero di argomenti non valido!");
 		exit(1);
 	}
 	return (0);
