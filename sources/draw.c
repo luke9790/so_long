@@ -24,6 +24,61 @@ static void	exit_draw(t_game *game, int x, int y)
 	img_draw(game, game->img_exit, x, y);
 }
 
+int	map_endlose(t_game *game)
+{
+	int	y;
+	int	x;
+
+	y = -1;
+	while (game->map[++y])
+	{
+		x = -1;
+		while (game->map[y][++x])
+		{
+//			if (game->map[y][x] == '1')
+//				img_draw(game, game->img_gameover, x, y);
+//			else if (game->map[y][x] == '0')
+//				img_draw(game, game->img_gameover, x, y);
+//			else if (game->map[y][x] == 'P')
+//				player_draw(game, game->img_gameover, x, y);
+//			else if (game->map[y][x] == 'C')
+//				img_draw(game, game->img_gameover, x, y);
+			if (game->map[y][x] == 'E')
+				img_draw(game, game->img_gameover, 0, 0);
+//			else if (game->map[y][x] == 'K')
+//				img_draw(game, game->img_gameover, x, y);
+		}
+	}
+	return (0);
+}
+int	map_endwin(t_game *game)
+{
+	int	y;
+	int	x;
+
+	y = -1;
+	while (game->map[++y])
+	{
+		x = -1;
+		while (game->map[y][++x])
+		{
+//			if (game->map[y][x] == '1')
+//				img_draw(game, game->img_youwin, x, y);
+//			else if (game->map[y][x] == '0')
+//				img_draw(game, game->img_youwin, x, y);
+//			else if (game->map[y][x] == 'P')
+//				player_draw(game, game->img_youwin, x, y);
+//			else if (game->map[y][x] == 'C')
+//				img_draw(game, game->img_youwin, x, y);
+			if (game->map[y][x] == 'E')
+				img_draw(game, game->img_youwin, 32, 32);
+//			else if (game->map[y][x] == 'K')
+//				img_draw(game, game->img_youwin, x, y);
+		}
+	}
+	return (0);
+}
+	
 int	map_draw(t_game *game)
 {
 	int	y;
@@ -49,7 +104,11 @@ int	map_draw(t_game *game)
 				img_draw(game, game->img_enemie, x, y);
 		}
 	}
-	display_moves(game);
+	display_moves(game);	
+	if(game->endgame == 1)
+		map_endlose(game);
+	if(game->endgame == 2)
+		map_endwin(game);
 	return (0);
 }
 

@@ -39,16 +39,5 @@ void	gameplay(t_game *game)
 	mlx_hook(game->win, 2, 1L << 0, keypress, game);
 	mlx_hook(game->win, 17, 1L << 17, exit_game, game);
 	mlx_hook(game->win, 9, 1L << 21, map_draw, game);
-	if (game->endgame == 1)
-	{
-		game->win = mlx_new_window(game->mlx, 640, 360, "Game Over");
-		img_draw(game->mlx, "assets/images/gameover.xpm", 640, 360);
-	}
-	if (game->endgame == 2)
-	{
-		game->win = mlx_new_window(game->mlx, 640, 360, "You Win!");
-		img_draw(game->mlx, "assets/images/youwin.xpm", 640, 360);
-	}
-	
 	mlx_loop_hook(game->mlx, animation, game);
 }

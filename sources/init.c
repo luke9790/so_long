@@ -2,6 +2,12 @@
 
 static void	img_init(t_game *game)
 {
+	int	widht;
+	int	height;
+	
+	widht = 640;
+	height = 360;
+	
 	game->img_backg = mlx_xpm_file_to_image
 		(game->mlx, "assets/images/pavimento32.xpm", &game->img_w, &game->img_h);
 	game->img_wall = mlx_xpm_file_to_image
@@ -14,6 +20,10 @@ static void	img_init(t_game *game)
 		(game->mlx, "assets/images/E1.xpm", &game->img_w, &game->img_h);
 	game->img_enemie = mlx_xpm_file_to_image
 		(game->mlx, "assets/images/EN1.xpm", &game->img_w, &game->img_h);
+	game->img_gameover = mlx_xpm_file_to_image
+		(game->mlx, "assets/images/gameover.xpm", &game->map_w, &game->map_h);
+	game->img_youwin = mlx_xpm_file_to_image
+		(game->mlx, "assets/images/youwin.xpm", &game->map_w, &game->map_h);
 }
 
 static void	size_window_init(t_game *game)
