@@ -26,7 +26,7 @@ OBJECTS			= 	$(SOURCES:.c=.o)
 
 NAME			=	so_long
 
-CC				=	gcc
+CC				=	gcc -no-pie
 RM				=	rm -f
 
 CFLAGS			=	-Wall -Wextra -Werror

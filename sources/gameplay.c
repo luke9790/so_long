@@ -35,9 +35,25 @@ static int	keypress(int keycode, t_game *game)
 
 void	gameplay(t_game *game)
 {
-	
-	mlx_hook(game->win, 2, 1L << 0, keypress, game);
-	mlx_hook(game->win, 17, 1L << 17, exit_game, game);
-	mlx_hook(game->win, 9, 1L << 21, map_draw, game);
-	mlx_loop_hook(game->mlx, animation, game);
+	if(game->endgame == 0)
+	{	
+		mlx_hook(game->win, 2, 1L << 0, keypress, game);
+		mlx_hook(game->win, 17, 1L << 17, exit_game, game);
+		mlx_hook(game->win, 9, 1L << 21, map_draw, game);
+		mlx_loop_hook(game->mlx, animation, game);
+	}
+	else if(game->endgame == 1)
+	{
+		mlx_destroy_window(game->mlx, game->win);
+		game->win = mlx_new_window(game->mlx, 640, 360, "Game Over");
+		img_draw(game, game->img_gameover, 0, 0);
+		mlx_hook(game->win, 17, 1L << 17, exit_game, game);
+	}
+	else if(game->endgame == 2)
+	{	
+		mlx_destroy_window(game->mlx, game->win);
+		game->win = mlx_new_window(game->mlx, 640, 360, "You Win");
+		img_draw(game, game->img_youwin, 0, 0);
+		mlx_hook(game->win, 17, 1L << 17, exit_game, game);
+	}
 }

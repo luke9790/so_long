@@ -19,6 +19,7 @@ typedef struct s_game
 	void	*img_enemie;
 	void	*img_gameover;
 	void	*img_youwin;
+	void	*img_nero;
 	int		map_w;
 	int		map_h;
 	int		img_w;

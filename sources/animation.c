@@ -2,7 +2,7 @@
 
 int	animation(t_game *game)
 {
-	if (game->loop < 1000)
+	if (game->loop < 5000)
 	{
 		game->loop++;
 		return (0);

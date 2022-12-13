@@ -33,13 +33,13 @@ int	main(int argc, char **argv)
 		{
 			if (game.map)
 				free_map(game.map);
-			printf("Errore\nMappa non valida!");
+			printf("Errore\nMappa non valida!\n");
 			exit(1);
 		}
 	}
 	else
 	{
-		printf("Errore\nNumero di argomenti non valido!");
+		printf("Errore\nNumero di argomenti non valido!\n");
 		exit(1);
 	}
 	return (0);
