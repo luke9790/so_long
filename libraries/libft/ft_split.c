@@ -3,89 +3,90 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvaz-fe <igvaz-fe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lmasetti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/03 14:18:42 by igvaz-fe          #+#    #+#             */
-/*   Updated: 2021/08/11 13:36:34 by igvaz-fe         ###   ########.fr       */
+/*   Created: 2022/10/11 12:54:31 by lmasetti          #+#    #+#             */
+/*   Updated: 2022/10/11 12:54:33 by lmasetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	str_counter(char *str, char c)
+static int	countwords(char const *s, char c)
 {
+	int	count;
 	int	i;
-	int	indicator;
-	int	nstr;
+	int	flag;
+
+	count = 0;
+	i = 0;
+	flag = 0;
+	while (s[i])
+	{
+		if (s[i] != c && flag == 0)
+		{
+			count++;
+			flag = 1;
+		}
+		else if (s[i] == c)
+			flag = 0;
+		i++;
+	}
+	return (count);
+}
+
+static char	*create_word(char const *s, char c, int start)
+{
+	char	*newword;
+	int		i;
+	int		startcpy;
 
 	i = 0;
-	nstr = 0;
-	while (str[i])
+	startcpy = start;
+	while (s[start] != c && s[start] != '\0')
 	{
-		indicator = 0;
-		while (str[i] == c && str[i])
-			i++;
-		while (str[i] != c && str[i])
-		{
-			indicator = 1;
-			i++;
-		}
-		while (str[i] == c && str[i])
-			i++;
-		if (indicator == 1)
-			nstr++;
+		i++;
+		start++;
 	}
-	return (nstr);
-}
-
-static int	str_len(char const *s, char c)
-{
-	int	len;
-
-	len = 0;
-	while (*s != c && *s != '\0')
+	newword = malloc (sizeof(char) * i + 1);
+	i = 0;
+	if (!newword)
+		return (NULL);
+	while (s[startcpy] != c && s[startcpy] != '\0')
 	{
-		len++;
-		s++;
+		newword[i] = s[startcpy];
+		i++;
+		startcpy++;
 	}
-	return (len);
-}
-
-static void	*ptr_free(char **ptr, int i)
-{
-	while (i > 0)
-	{
-		free(ptr[i]);
-		i--;
-	}
-	free(ptr);
-	return (NULL);
+	newword[i] = '\0';
+	return (newword);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**ptr;
-	int		nstr;
+	char	**strarr;
 	int		i;
+	int		b;
+	int		flag;
 
-	if (!s)
-		return (NULL);
-	nstr = str_counter((char *)s, c);
-	ptr = (char **)malloc((nstr + 1) * sizeof(char *));
-	if (!ptr)
+	strarr = (char **)malloc(sizeof(char *) * (countwords(s, c) + 1));
+	if (!strarr)
 		return (NULL);
 	i = 0;
-	while (nstr > 0)
+	b = 0;
+	flag = 0;
+	while (s[i])
 	{
-		while (*s && *s == c)
-			s++;
-		ptr[i] = ft_substr(s, 0, str_len(s, c));
-		if (!ptr[i])
-			return (ptr_free(ptr, i));
-		s = s + str_len(s, c);
+		if (s[i] != c && flag == 0)
+		{
+			strarr[b] = create_word(s, c, i);
+			b++;
+			flag = 1;
+		}
+		if (s[i] == c)
+			flag = 0;
 		i++;
-		nstr--;
 	}
-	ptr[i] = 0;
-	return (ptr);
+	strarr[b] = NULL;
+	return (strarr);
 }

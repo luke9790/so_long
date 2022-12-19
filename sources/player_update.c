@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   player_update.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmasetti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/19 11:09:50 by lmasetti          #+#    #+#             */
+/*   Updated: 2022/12/19 11:09:52 by lmasetti         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 static void	player_update_image(char key, t_game *game)
@@ -29,10 +41,7 @@ void	player_w(t_game *game)
 		map_draw(game);
 	}
 	else if (game->map[game->y_player][game->x_player] == 'K')
-	{
 		tombstone_draw(game);
-		game->endgame = 1;
-	}
 	else if (game->map[game->y_player][game->x_player] == '1'
 			|| game->map[game->y_player][game->x_player] == 'E')
 		game->y_player += 1;
@@ -60,10 +69,7 @@ void	player_s(t_game *game)
 		map_draw(game);
 	}
 	else if (game->map[game->y_player][game->x_player] == 'K')
-	{
 		tombstone_draw(game);
-		game->endgame = 1;
-	}
 	else if (game->map[game->y_player][game->x_player] == '1'
 			|| game->map[game->y_player][game->x_player] == 'E')
 		game->y_player -= 1;
@@ -91,10 +97,7 @@ void	player_d(t_game *game)
 		map_draw(game);
 	}
 	else if (game->map[game->y_player][game->x_player] == 'K')
-	{
 		tombstone_draw(game);
-		game->endgame = 1;
-	}
 	else if (game->map[game->y_player][game->x_player] == '1'
 			|| game->map[game->y_player][game->x_player] == 'E')
 		game->x_player -= 1;
@@ -122,10 +125,7 @@ void	player_a(t_game *game)
 		map_draw(game);
 	}
 	else if (game->map[game->y_player][game->x_player] == 'K')
-	{
 		tombstone_draw(game);
-		game->endgame = 1;
-	}
 	else if (game->map[game->y_player][game->x_player] == '1'
 			|| game->map[game->y_player][game->x_player] == 'E')
 		game->x_player += 1;

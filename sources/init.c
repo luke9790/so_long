@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmasetti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/19 11:16:10 by lmasetti          #+#    #+#             */
+/*   Updated: 2022/12/19 11:16:15 by lmasetti         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 static void	img_init(t_game *game)
 {
 	game->img_backg = mlx_xpm_file_to_image
-		(game->mlx, "assets/images/pavimento32.xpm", &game->img_w, &game->img_h);
+		(game->mlx, "assets/images/pav.xpm", &game->img_w, &game->img_h);
 	game->img_wall = mlx_xpm_file_to_image
 		(game->mlx, "assets/images/muro32.xpm", &game->img_w, &game->img_h);
 	game->img_player = mlx_xpm_file_to_image

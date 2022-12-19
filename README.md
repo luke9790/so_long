@@ -7,11 +7,11 @@ make
 In caso di problemi ripulire usando
 
 ```
-make fclean
+make fclean oppure make re
 ```
 
 ### Mappa
-Per eseguire il programma e' necessario selezionare una mappa normale o bonus. Esempi:
+Per eseguire il programma e' necessario selezionare una mappa. Esempi:
 ```
 ./so_long assets/maps/big.ber
 ```

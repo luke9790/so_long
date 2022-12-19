@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   gameplay.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmasetti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/19 11:09:25 by lmasetti          #+#    #+#             */
+/*   Updated: 2022/12/19 11:09:27 by lmasetti         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 static void	game_events(int keycode, t_game *game)
@@ -35,21 +47,21 @@ static int	keypress(int keycode, t_game *game)
 
 void	gameplay(t_game *game)
 {
-	if(game->endgame == 0)
+	if (game->endgame == 0)
 	{	
 		mlx_hook(game->win, 2, 1L << 0, keypress, game);
 		mlx_hook(game->win, 17, 1L << 17, exit_game, game);
 		mlx_hook(game->win, 9, 1L << 21, map_draw, game);
 		mlx_loop_hook(game->mlx, animation, game);
 	}
-	else if(game->endgame == 1)
+	else if (game->endgame == 1)
 	{
 		mlx_destroy_window(game->mlx, game->win);
 		game->win = mlx_new_window(game->mlx, 640, 360, "Game Over");
 		img_draw(game, game->img_gameover, 0, 0);
 		mlx_hook(game->win, 17, 1L << 17, exit_game, game);
 	}
-	else if(game->endgame == 2)
+	else if (game->endgame == 2)
 	{	
 		mlx_destroy_window(game->mlx, game->win);
 		game->win = mlx_new_window(game->mlx, 640, 360, "You Win");
